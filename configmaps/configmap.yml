@@ -1,6 +1,7 @@
 apiVersion: v1 
 kind: ConfigMap
 metadata:
-  name: mount_html_file
+  name: web-conf
 data:
-  html_file:  /usr/share/nginx/index.html
+  STRING: "Welcome to my NGINX, you are awsome ! :D"
+  PATH:  /usr/share/nginx/html/index.html

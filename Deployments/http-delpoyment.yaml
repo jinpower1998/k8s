@@ -19,12 +19,23 @@ spec:
         image: nginx
         ports:
         - containerPort: 80
-        volumeMounts:
-        - mountPath:  /usr/share/nginx/html
-          name: index-html
-      volumes:
-        - name: index-html
-          hostPath: /usr/share/nginx/index.html
+        command: ["/bin/sh", "-c", "echo $(DATA_STRING) > $(DATA_PATH); sleep 5000"  ]
+      env:
+      - name: DATA_STRING
+        valueFrom:
+          configMapKeyRef:
+            name: web-conf
+            key: STRING
+            optional: true
+      - name: DATA_PATH
+        valueFrom:
+          configMapKeyRef:
+            name: web-conf
+            key: PATTH
+            optional: true
+    restartPolicy: never
+
+
 
       
          
