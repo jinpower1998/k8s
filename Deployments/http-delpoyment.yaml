@@ -20,20 +20,20 @@ spec:
         ports:
         - containerPort: 80
         command: ["/bin/sh", "-c", "echo $(DATA_STRING) > $(DATA_PATH); sleep 5000"  ]
-      env:
-      - name: DATA_STRING
-        valueFrom:
-          configMapKeyRef:
-            name: web-conf
-            key: STRING
-            optional: true
-      - name: DATA_PATH
-        valueFrom:
-          configMapKeyRef:
-            name: web-conf
-            key: PATH
-            optional: true
-    restartPolicy: never
+        env:
+        - name: DATA_STRING
+          valueFrom:
+            configMapKeyRef:
+              name: web-conf
+              key: STRING
+              optional: true
+        - name: DATA_PATH
+          valueFrom:
+            configMapKeyRef:
+              name: web-conf
+              key: PATH
+              optional: true
+    restartPolicy: Never
 
 
 
