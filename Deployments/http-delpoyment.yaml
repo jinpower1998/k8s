@@ -31,7 +31,7 @@ spec:
         valueFrom:
           configMapKeyRef:
             name: web-conf
-            key: PATTH
+            key: PATH
             optional: true
     restartPolicy: never
 
