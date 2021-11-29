@@ -23,7 +23,8 @@ spec:
         - mountPath:  /usr/share/nginx/html
           name: index-html
       volumes:
-      -  hostPath: /usr/share/nginx/index.html
-         name: index-file
+        - name: index-html
+          hostPath: /usr/share/nginx/index.html
+
       
          
