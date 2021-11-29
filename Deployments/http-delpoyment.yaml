@@ -33,4 +33,7 @@ spec:
               name: web-conf
               key: PATH
               optional: true
-  restartPolicy: Never
+
+
+      
+         
