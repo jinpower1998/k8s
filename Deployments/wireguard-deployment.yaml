@@ -17,3 +17,7 @@ spec:
         image: linuxserver/wireguard:latest
         ports:
         - containerPort: 51820
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
