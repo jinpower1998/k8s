@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: web-server
-        image: nginx
+        image: nginx:latest
         ports:
         - containerPort: 80
         command: ["/bin/sh", "-c", "echo $(DATA_STRING) > $(DATA_PATH); sleep 5000"  ]
