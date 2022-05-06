@@ -15,8 +15,60 @@ spec:
       containers:
       - name: wireguard
         image: linuxserver/wireguard:latest
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 51820
+# Env's from cfg-map        
+        env:
+        - name: Wireguard-Network-Options
+          valueFrom:
+            configMapKeyRef:
+            - name: User-ID
+              key: PUID
+              optional: true
+
+            - name: Timezone
+              key: TZ
+              optional: true
+
+            - name: Group-ID
+              key: PGID
+              optional: true
+
+            - name: Server-URL
+              key: SERVERURL
+              optional: true
+
+            - name: Server-Port
+              key: SERVERPORT
+              optional: true
+
+            - name: Peers
+              key: PEERS
+              optional: true
+            
+            - name: Peerdns
+              key: PEERDNS
+              optional: true
+
+            - name: Internal-Subnet
+              key: INTERNAL_SUBNET
+              optional: true
+
+            - name: Allowd-IP's
+              key: ALLOWEDIPS 
+              optional: true
+            
+            - name: run-options
+              key: run-opts
+              optional: true
+# Volume Mounts 
+        volumeMounts:
+          - name: config
+            mountPath: /var/wireguard/config
+          - name: modules
+            mountPath: /lib/modules 
+# ressource-limits     
         resources:
           limits:
             memory: "128Mi"
