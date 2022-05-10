@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wireguard-vpn
+  labels:
+    app: wireguard
 spec:
   replicas: 1
   selector:
@@ -26,60 +28,70 @@ spec:
               name: wireguard-conf
               key: PUID
               optional: true
+
         - name: Timezone
           valueFrom:
             configMapKeyRef:
               name: wireguard-conf
               key: TZ
               optional: true
+
         - name: Group-ID
           valueFrom:
             configMapKeyRef:
               name: wireguard-conf
               key: PGID
               optional: true
+
         - name: Server-URL
           valueFrom:
             configMapKeyRef:
               name: wireguard-conf
               key: SERVERURL
               optional: true
+
         - name: Server-Port
           valueFrom:
             configMapKeyRef:
               name: wireguard-conf
               key: SERVERPORT
               optional: true
+
         - name: Peers
           valueFrom:
             configMapKeyRef:
               name: wireguard-conf
               key: PEERS
               optional: true
+
         - name: Peerdns
           valueFrom:
             configMapKeyRef:
               name: wireguard-conf
               key: PEERDNS
               optional: true
+
         - name: Internal-Subnet
           valueFrom:
             configMapKeyRef:
               name: wireguard-conf
               key: INTERNAL_SUBNET
               optional: true
+
         - name: Allowd-IP's
           valueFrom:
             configMapKeyRef:
             name: wireguard-conf
             key: ALLOWEDIPS 
             optional: true            
+
         - name: run-options
           valueFrom:
             configMapKeyRef:
               name: wireguard-conf
               key: run-opts
               optional: true
+
 # Volume Mounts 
         volumeMounts:
           - name: config
