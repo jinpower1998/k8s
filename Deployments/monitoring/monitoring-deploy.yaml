@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: monitoring-deploy
+spec:
+  selector:
+    matchLabels:
+      app: monitoring-deploy
+  template:
+    metadata:
+      labels:
+        app: monitoring-deploy
+    spec:
+      containers:
+      - name: prometheus 
+        image: bitnami/prometheus:latest
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "1000m"
+        ports:
+        - containerPort: 9090
+      - name: grafana
+        image: bitnami/grafana:latest
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "1000m"
+        ports:
+          - containerPort: 3000
+
