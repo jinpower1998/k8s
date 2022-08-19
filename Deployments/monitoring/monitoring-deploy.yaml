@@ -12,20 +12,23 @@ spec:
         app: monitoring-deploy
     spec:
       containers:
+#prometheus
       - name: prometheus 
         image: bitnami/prometheus:latest
         resources:
           limits:
-            memory: "256Mi"
-            cpu: "1000m"
-        ports:
-        - containerPort: 9090
+            memory: "128Mi"
+            cpu: "500m"
+        ports: 
+          - containerPort: 9090
+
+#grafana
       - name: grafana
         image: bitnami/grafana:latest
         resources:
           limits:
-            memory: "256Mi"
-            cpu: "1000m"
+            memory: "128Mi"
+            cpu: "500m"
         ports:
           - containerPort: 3000
 
