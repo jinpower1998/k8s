@@ -5,3 +5,4 @@ metadata:
 data:
   STRING: "Welcome to my NGINX, you are awsome ! :D"
   PATH:  /usr/share/nginx/html/index.html
+
